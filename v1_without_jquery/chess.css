@@ -7,6 +7,7 @@ h1{
 }
 table{
     margin: auto;
+    
     border: 1px solid black;
     background: tan;
     
@@ -14,6 +15,7 @@ table{
 hr{
     margin-top: 3%;
 }
+
 td{
     background: tan;
     font-family: monospace;
