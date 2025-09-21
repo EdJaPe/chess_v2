@@ -64,41 +64,6 @@ function boardFromJson(){
     xhttpObj.onload = function() { createChessBoard(JSON.parse(this.responseText)) };
     xhttpObj.open("GET", "chessboard.json");
     xhttpObj.send();
+
 }
 
-// function createTable(jsonData) {
-//         // Extract table headings
-//         var myBooks = jsonData.books;
-//         var headings = [];
-//         for (var key in myBooks[0]) {
-//                 headings.push(key);
-//         }
-//         // Create table.
-//         var table = document.createElement("table");
-
-//         // Create table header row using the extracted headers above.
-//         var tr = table.insertRow();
-//         for (var i = 0; i < headings.length; i++) {
-//                 var th = document.createElement("th");
-//                 th.innerHTML = headings[i];
-//                 tr.appendChild(th);
-//         }
-//         // add json data to the table as rows.
-//         for (var i = 0; i < myBooks.length; i++) {
-//                 tr = table.insertRow();
-//                 for (var j = 0; j < headings.length; j++) {
-//                         var td = tr.insertCell();
-//                         td.innerHTML = myBooks[i][headings[j]];
-//                 }
-//         }
-//         // Insert the table into the page.
-//         var divShowData = document.getElementById('booksTable');
-//         divShowData.innerHTML = "";
-//         divShowData.appendChild(table);
-// }
-// function tableFromJson() {
-//         xhttpObj = new XMLHttpRequest();
-//         xhttpObj.onload = function() { createTable(JSON.parse(this.responseText)) };
-//         xhttpObj.open("GET", "books.json");
-//         xhttpObj.send();
-// }
