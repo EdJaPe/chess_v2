@@ -66,4 +66,3 @@ function boardFromJson(){
     xhttpObj.send();
 
 }
-
