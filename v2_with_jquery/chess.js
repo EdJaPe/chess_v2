@@ -13,7 +13,6 @@ function movePiece() {
     
 }
 function createChessBoard(jsonData){
-
     //create Chess Headers
     var chessBoard = jsonData.chessboard;
     const n = chessBoard.length-1;
@@ -28,29 +27,25 @@ function createChessBoard(jsonData){
         asciiStart++
     });
      //creating board
-    
-     // var board = document.createElement("table")
-    // var $board = $("<table>");
-    // const $tbody = $("<tbody>");
-     $("#chessboard").append("<table>");
-
-
+     const $table = $("<table>");
+    const $tbody = $("<tbody>");
+    //  $("#chessboard").append("<table>");
     // var counter = 0
     for(var i = 0; i<= chessBoard.length; i++){
         // var tr = board.insertRow();
-        $("#chessboard").append("<tr>");
+        const $tr = $("<tr>");
         // const $tr = $("<tr>");
         if(i<chessBoard.length){
-            $("#chessboard").append("<th>" +verticalHeader[n-i]+"</th>");
+            $tr.append($("<th>").html(verticalHeader[n-i]));
         }else{
-            $("#chessboard").append("<th></th>");
+            $tr.append($("<th>").html(""));
         }
         
         // console.log(board)
         for (var j =0 ; j <verticalHeader.length; j++){
             
             if(i===verticalHeader.length){
-                $("#chessboard").append("<th>" +horizontalHeader[j]+"</th>")
+                $tr.append($("<th>").html(horizontalHeader[j]));
                 // console.log(counter,"❤️")
                 // counter++
             }
@@ -61,15 +56,52 @@ function createChessBoard(jsonData){
                 // var td = tr.insertCell();
                 // td.setAttribute("id",key)
                 // td.innerHTML = chessBoard[i][key];
-                $("#chessboard").append("<td>" +chessBoard[i][key]+"</td>")
+                $tr.append($("<td>", { id:key, html:chessBoard[i][key]}));
                 // console.log(chessBoard[i][key],"👀")
                 // counter++
             }
         }
-        $("#chessboard").append("</tr>")
+        $tbody.append($tr)
     }
-    $("#chessboard").append("</table>")
+    $table.append($tbody);
+    $("#chessboard").append($table)
 }
+    //___________________________________
+     //creating board
+//     var board = document.createElement("table")
+//     var counter = 0
+//     for(var i = 0; i<= chessBoard.length; i++){
+//         var tr = board.insertRow();
+//         var th = document.createElement("th");
+//         (i<chessBoard.length) ? th.innerHTML = verticalHeader[n-i]: th.innerHTML = "" ;
+//         tr.appendChild(th);
+//         // console.log(board)
+//         for (var j =0 ; j <verticalHeader.length; j++){
+            
+//             if(i===verticalHeader.length){
+//                 th = document.createElement("th");
+//                 tr.appendChild(th);
+//                 th.innerHTML= horizontalHeader[j];
+//                 console.log(counter,"❤️")
+//                 counter++
+//             }
+//             else {
+//                 var td = tr.insertCell();
+//                 const file = String.fromCharCode(97+j)
+//                 const rank = chessBoard.length - i;
+//                 const key = file +rank;
+//                 td.setAttribute("id",key)
+//                 td.innerHTML = chessBoard[i][key];
+//                 console.log(chessBoard[i][key],"👀")
+//                 counter++
+//             }
+//         }
+//     }
+//     console.log(board)
+//     var divShowBoard = document.getElementById("chessboard");
+//     divShowBoard.innerHTML= "";
+//     divShowBoard.appendChild(board)
+// }
 function boardFromJson(){
 
     $.ajax({
